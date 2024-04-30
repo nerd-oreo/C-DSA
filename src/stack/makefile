@@ -1,2 +1,2 @@
-test: test.c
-	gcc test.c -o test.out
+stack: main.c stack.c
+	gcc -Wall -o main.out main.c stack.c
