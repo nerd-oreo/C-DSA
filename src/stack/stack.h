@@ -5,12 +5,12 @@
 
 struct Stack {
     int top;
-    int size;
+    size_t size;
     void *data; 
 };
 
 typedef Stack Stack;
-Stack* Stack_init(int size);
+Stack* Stack_init(size_t stack_size, size_t type_size);
 void Stack_push(void *data);
 void* Stack_pop(Stack *stack);
 int Stack_isFull(Stack *stack);
