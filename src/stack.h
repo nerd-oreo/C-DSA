@@ -12,7 +12,7 @@ typedef struct ArrayStack
 } ArrayStack;
 
 // ArrayStack operations
-ArrayStack *ArrayStack_init(size_t type_size);
+ArrayStack *ArrayStack_init();
 void ArrayStack_push(ArrayStack *stack, void *data, size_t type_size);
 void *ArrayStack_pop(ArrayStack *stack);
 void *ArrayStack_peek(ArrayStack *stack);
