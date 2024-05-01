@@ -12,3 +12,13 @@ ArrayStack *ArrayStack_init()
     }
     return NULL; // fail to allocate memory
 }
+
+
+void ArrayStack_debug(ArrayStack *stack)
+{
+    if (stack != NULL)
+    {
+        printf("stack->size: %lu\n", stack->size);
+        printf("stack->top: %d\n", stack->top);
+    }
+}
