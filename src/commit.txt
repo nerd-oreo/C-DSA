@@ -1,0 +1,3 @@
+Implement function ArrayStack_init
+
+ArrayStack_init() is used to initialize a new stack. The function will allocate memory for the new stack, set default stack size and default top index. Return the address of the stack.
