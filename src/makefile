@@ -1,2 +1,2 @@
-stack: main.c stack.c
-	gcc -Wall -o main.out main.c stack.c
+stack: main.c common.c stack.c
+	gcc -Wall -o main.out main.c common.c stack.c 
