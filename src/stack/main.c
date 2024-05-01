@@ -10,12 +10,23 @@ int main() {
     srand(time(NULL));
     const size_t stack_size = 5;
 
+    int test_1 = 5;
+
     // Initialize the stack
     Stack *stack = Stack_init(stack_size, sizeof(int));
 
     // Check if the stack is empty
+    if (stack != NULL) {
+        printf("Stack is empty: %d\n", Stack_isEmpty(stack));
+        
+        // Push data to the stack
+        for (int i = 0; i < test_1; i++) {
+            int number = random_number(1, 100);
+            int* num_ptr = &number;
+            Stack_push(stack, (void*)num_ptr, sizeof(int));
+        }
 
-    // Push data to the stack
+    }
 
     // Check if the stack is full
 
