@@ -5,6 +5,9 @@
 
 int main()
 {
+    ArrayStack *stack = ArrayStack_init();
+
+    ArrayStack_debug(stack);
 
     return 0;
 }
