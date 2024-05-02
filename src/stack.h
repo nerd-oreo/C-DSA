@@ -8,7 +8,7 @@ typedef struct ArrayStack
 {
     size_t size;
     int top;
-    void *stack[MAX_SIZE];
+    void *data[MAX_SIZE];
 } ArrayStack;
 
 // ArrayStack operations
