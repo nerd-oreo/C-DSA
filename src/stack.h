@@ -19,6 +19,6 @@ void *ArrayStack_peek(ArrayStack *stack);
 void ArrayStack_clear(ArrayStack *stack);
 bool ArrayStack_isEmpty(ArrayStack *stack);
 bool ArrayStack_isFull(ArrayStack *stack);
-void ArrayStack_debug(ArrayStack *stack); // print stack info
+void ArrayStack_debug(ArrayStack *stack, char type); // print stack info
 #undef STACK_H
 #endif
