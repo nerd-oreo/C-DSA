@@ -1,3 +1,7 @@
-Implement function ArrayStack_debug
+Implement ArrayStack_push function - push data to the stack
 
-ArrayStack_debug() is used to print the stack information.
+Implement ArrayStack_isEmpty function - check if the stack is empty
+
+Implement ArrayStack_isFull function - check if the stack is full
+
+Modify ArrayStack_debug to print the data in the stack from the top.
