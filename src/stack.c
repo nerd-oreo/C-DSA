@@ -1,6 +1,13 @@
+/*  @file       stack.c
+ *  @brief      This file implements the ArrayStack operations.
+ *  @author     Duy Tran
+ */
 #include <stdio.h>
 #include "stack.h"
 
+/*  @brief      Initialize the stack.
+ *  @return     Return the address to the stack, or NULL if it fails to allocate memory.
+ */
 ArrayStack *ArrayStack_init()
 {
     ArrayStack *stack = (ArrayStack *)malloc(sizeof(ArrayStack)); // by default malloc would return void*
@@ -27,14 +34,22 @@ void ArrayStack_push(ArrayStack *stack, void *data)
     }
 }
 
+/*  @brief      Check if the stack is empty.
+ *  @param      *stack: The address to the stack.
+ *  @return     Return true if the stack is empty, false otherwise.
+ */
 bool ArrayStack_isEmpty(ArrayStack *stack)
 {
     return stack->size == 0;
 }
 
+/*  @brief      Check if the stack is full.
+ *  @param      *stack: The address to the stack.
+ *  @return     Return true if the stack full, false otherwise.
+ */
 bool ArrayStack_isFull(ArrayStack *stack)
 {
-    return stack->top == stack->size-1;
+    return stack->top == stack->size - 1;
 }
 
 void ArrayStack_debug(ArrayStack *stack, char type)
@@ -51,22 +66,22 @@ void ArrayStack_debug(ArrayStack *stack, char type)
             printf("stack[%d]: ", index);
             switch (type)
             {
-                case 'i':   // integer
-                    printf("%d\n", *(int*)data);
-                    break;
-                case 'c':
-                    printf("%c\n", *(char*)data);
-                    break;
-                case 'f':
-                    printf("%f\n", *(float*)data);
-                    break;
-                default:
-                    printf("unspecified type\n");
-                    break;
+            case 'i': // integer
+                printf("%d\n", *(int *)data);
+                break;
+            case 'c':
+                printf("%c\n", *(char *)data);
+                break;
+            case 'f':
+                printf("%f\n", *(float *)data);
+                break;
+            default:
+                printf("unspecified type\n");
+                break;
             }
         }
     }
-    else 
+    else
     {
         printf("The stack is null.\n");
     }
