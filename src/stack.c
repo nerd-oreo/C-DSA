@@ -73,6 +73,7 @@ void ArrayStack_debug(ArrayStack *stack, char type)
 {
     if (stack != NULL)
     {
+        printf("\n");
         printf("stack->size: %llu\n", stack->size);
         printf("stack->top: %d\n", stack->top);
         printf("----------------------------------\n");
