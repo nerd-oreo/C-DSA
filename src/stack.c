@@ -20,6 +20,10 @@ ArrayStack *ArrayStack_init()
     return NULL; // fail to allocate memory
 }
 
+/*  @brief      Push data to the stack
+ *  @param      [in] stack: The address to the stack.
+ *  @param      [in] data:  The address to the data.
+ */
 void ArrayStack_push(ArrayStack *stack, void *data)
 {
     if (ArrayStack_isEmpty(stack) || !ArrayStack_isFull(stack))
@@ -34,8 +38,12 @@ void ArrayStack_push(ArrayStack *stack, void *data)
     }
 }
 
+void *ArrayStack_pop(ArrayStack *stack)
+{
+}
+
 /*  @brief      Check if the stack is empty.
- *  @param      *stack: The address to the stack.
+ *  @param      [in] stack: The address to the stack.
  *  @return     Return true if the stack is empty, false otherwise.
  */
 bool ArrayStack_isEmpty(ArrayStack *stack)
@@ -44,7 +52,7 @@ bool ArrayStack_isEmpty(ArrayStack *stack)
 }
 
 /*  @brief      Check if the stack is full.
- *  @param      *stack: The address to the stack.
+ *  @param      [in] stack: The address to the stack.
  *  @return     Return true if the stack full, false otherwise.
  */
 bool ArrayStack_isFull(ArrayStack *stack)
@@ -52,6 +60,10 @@ bool ArrayStack_isFull(ArrayStack *stack)
     return stack->top == stack->size - 1;
 }
 
+/*  @brief      Print out the stack information and data.
+ *  @param      [in] stack: The address to the stack.
+ *  @param      [in] type: The data type of the actual data (i: int, c: char, f: float)
+ */
 void ArrayStack_debug(ArrayStack *stack, char type)
 {
     if (stack != NULL)
