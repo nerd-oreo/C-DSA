@@ -38,13 +38,37 @@ void ArrayStack_push(ArrayStack *stack, void *data)
     }
 }
 
+/*  @brief      Pop data from the stack
+ *  @param      [in] stack: The address to the stack.
+ *  @return     return the address to the data.
+ */
 void *ArrayStack_pop(ArrayStack *stack)
 {
-    void *data = stack->data[stack->top];
-    stack->data[stack->top] = NULL;
-    stack->top--;
-    stack->size--;
-    return data;
+    if (!ArrayStack_isEmpty(stack))
+    {
+        void *data = stack->data[stack->top];
+        stack->data[stack->top] = NULL;
+        stack->top--;
+        stack->size--;
+        return data;
+    }
+    fprintf(stderr, "The stack is empty.\n");
+    return NULL;
+}
+
+/*  @brief      Fetch data from the top of the stack
+ *  @param      [in] stack: The address to the stack.
+ *  @return     return the address to the data.
+ */
+void *ArrayStack_peek(ArrayStack *stack)
+{
+    if (!ArrayStack_isEmpty(stack))
+    {
+        void *data = stack->data[stack->top];
+        return data;
+    }
+    fprintf(stderr, "The stack is empty.\n");
+    return NULL;
 }
 
 /*  @brief      Check if the stack is empty.
