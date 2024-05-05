@@ -36,8 +36,21 @@ void stack_test()
     // Test ArrayStack_pop
     do
     {
-        void *data = ArrayStack_pop(stack);
-        printf("\ndata: %d\n", *(int *)data);
+        int *data = (int *)ArrayStack_pop(stack);
+        printf("\ndata from pop(): %d\n", *data);
         ArrayStack_debug(stack, 'i');
     } while (stack->size != 0);
+
+    // Test ArrayStack_push
+    for (int i = 0; i < nItem; i++)
+    {
+        int *data = (int *)malloc(sizeof(int));
+        *data = random_number(1, 100);
+        ArrayStack_push(stack, data);
+    }
+
+    // Test ArrayStack_peek
+    ArrayStack_debug(stack, 'i');
+    int *data = ArrayStack_peek(stack);
+    printf("\ndata from peek(): %d\n", *data);
 }
