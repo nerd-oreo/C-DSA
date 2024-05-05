@@ -6,4 +6,4 @@
 int random_number(int min, int max);
 
 #undef COMMON_H
-#endif
+#endif // COMMON_H
