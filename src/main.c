@@ -33,7 +33,7 @@ void stack_test()
     // Test ArrayStack_debug
     ArrayStack_debug(stack, 'i');
 
-    // Test Array_pop
+    // Test ArrayStack_pop
     do
     {
         void *data = ArrayStack_pop(stack);
