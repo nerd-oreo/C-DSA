@@ -75,7 +75,7 @@ void ArrayStack_debug(ArrayStack *stack, char type)
     {
         printf("stack->size: %llu\n", stack->size);
         printf("stack->top: %d\n", stack->top);
-        printf("----------------------------------\n\n");
+        printf("----------------------------------\n");
         // Print the elements from the top
         for (int index = stack->top; index > 0; index--)
         {
