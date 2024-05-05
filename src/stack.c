@@ -40,6 +40,11 @@ void ArrayStack_push(ArrayStack *stack, void *data)
 
 void *ArrayStack_pop(ArrayStack *stack)
 {
+    void *data = stack->data[stack->top];
+    stack->data[stack->top] = NULL;
+    stack->top--;
+    stack->size--;
+    return data;
 }
 
 /*  @brief      Check if the stack is empty.
