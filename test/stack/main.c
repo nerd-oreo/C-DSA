@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "common.h"
-#include "stack.h"
+#include <common/common.h>
+#include <stack/stack.h>
 
 void stack_test();
 
