@@ -1,3 +1,7 @@
+/*  @file       array.h
+ *  @brief      This file declare the interface for dynamic array data structure.
+ *  @author     Duy Tran
+ */
 #ifndef ARRAY_H
 #define ARRAY_H
 #include <stdlib.h>
@@ -44,4 +48,4 @@ void Array_sort(Array *array);
 // Other operations
 void Array_clear(Array *array);
 
-#endif
+#endif // ARRAY_H
