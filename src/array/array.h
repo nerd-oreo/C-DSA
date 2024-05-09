@@ -9,7 +9,7 @@ typedef struct Array
     size_t size;      // Actual size with data
 } Array;
 
-Array *Array_init(size_t capactity);
+Array * Array_init(size_t capactity);
 
 // Adding operations
 void Array_append(Array *array, void *data);              // Add last
@@ -22,15 +22,24 @@ void Array_removeLast(Array *array);
 void Array_removeAt(Array *array, int index);
 
 // Accessing operations
+void * Array_get(Array *array, int index);
+void * Array_getFirst(Array *array);
+void * Array_getLast(Array *array);
+
+// Shifting
+void Array_shiftLeft(Array *array);
+void Array_shiftRight(Array *array);
 
 // Size and Capacity operations
+size_t Array_size(Array *array);
+size_t Array_capacity(Array *array);
+void Array_resize(Array *array, size_t new_size);
 
 // Search and Update operations
+int Array_search(Array *array, void *value);    // Return value index
 
 // Sort Operations
-
-// Resizing operations
-void Array_resize(Array *array, size_t new_size);
+void Array_sort(Array *array);
 
 // Other operations
 void Array_clear(Array *array);
