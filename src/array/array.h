@@ -47,5 +47,5 @@ void Array_sort(Array *array);
 
 // Other operations
 void Array_clear(Array *array);
-
+void Array_debug(Array *array);
 #endif // ARRAY_H
