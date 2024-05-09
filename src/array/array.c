@@ -24,3 +24,38 @@ Array * Array_init(size_t capacity, size_t sizeType)
     fprintf(stderr, "Failed to allocate memory. \n");
     return NULL;
 }
+
+/*  @brief      Print array data for debugging purpose.
+*   @param      array:      The address to the array.
+*   @param      dataType:   Indicate data type for printing format.  
+*/
+void Array_debug(Array *array, char dataType)
+{
+    printf("Capacity: %d\n", array->capactity);
+    printf("Size: %d\n", array->size);
+
+    if (array->size > 0)
+    {
+        printf("\n-----------------------------\n");
+        printf("Array Data:\n");
+        for (int i = 0; i < array->size; i++)
+        {
+            printf("array[%d]: ", i);
+            switch(dataType)
+            {
+                case 'i':
+                    printf("%d\n", *(int*)array->elements+i);
+                    break;
+                case 'c':
+                    printf("%c\n", *(int*)array->elements+i);
+                    break;
+                case 'f':
+                    printf("%f\n", *(int*)array->elements+i);
+                    break;
+                default:
+                    printf("unspecified\n");
+                    break;
+            }
+        }
+    }
+}
