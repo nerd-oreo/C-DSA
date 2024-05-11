@@ -5,6 +5,7 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct Array
 {
@@ -38,6 +39,7 @@ void Array_shiftRight(Array *array);
 size_t Array_size(Array *array);
 size_t Array_capacity(Array *array);
 void Array_resize(Array *array, size_t newSize);
+bool Array_isEmpty(Array *array);
 
 // Search and Update operations
 int Array_search(Array *array, void *value);    // Return value index
