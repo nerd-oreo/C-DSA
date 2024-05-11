@@ -31,8 +31,8 @@ Array * Array_init(size_t capacity, size_t sizeType)
 */
 void Array_debug(Array *array, char dataType)
 {
-    printf("Capacity: %d\n", array->capactity);
-    printf("Size: %d\n", array->size);
+    printf("Capacity: %lld\n", array->capactity);
+    printf("Size: %lld\n", array->size);
 
     if (array->size > 0)
     {
@@ -47,15 +47,19 @@ void Array_debug(Array *array, char dataType)
                     printf("%d\n", *(int*)array->elements+i);
                     break;
                 case 'c':
-                    printf("%c\n", *(int*)array->elements+i);
+                    printf("%c\n", *(char*)array->elements+i);
                     break;
                 case 'f':
-                    printf("%f\n", *(int*)array->elements+i);
+                    printf("%f\n", *(float*)array->elements+i);
                     break;
                 default:
                     printf("unspecified\n");
                     break;
             }
         }
+    }
+    else
+    {
+        printf("Array is empty.\n");
     }
 }
