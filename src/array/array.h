@@ -9,7 +9,7 @@
 
 typedef struct Array
 {
-    void *elements;
+    void **elements;
     size_t capactity; // Available memory
     size_t size;      // Actual size with data
 } Array;
