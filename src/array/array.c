@@ -16,13 +16,26 @@ Array * Array_init(size_t capacity, size_t sizeType)
     Array *array = (Array*) malloc(sizeof(Array));
     if (array != NULL)
     {
-        array->elements = malloc(capacity * sizeType);
+        array->elements = (void**)malloc(capacity * sizeType);
         array->capactity = capacity;
         array->size = 0;
         return array;
     }
     fprintf(stderr, "Failed to allocate memory. \n");
     return NULL;
+}
+
+/*  @brief      Append an element to the end of the array.
+*   @param      *array: The address to the allocated array.
+*   @param      *data:  The address to the data.
+*/
+void Array_append(Array *array, void *data)
+{
+    if (array->size < array->capactity)
+    {
+        array->elements[array->size] = data;
+        array->size++;
+    }
 }
 
 /*  @brief      Print array data for debugging purpose.
@@ -40,17 +53,17 @@ void Array_debug(Array *array, char dataType)
         printf("Array Data:\n");
         for (int i = 0; i < array->size; i++)
         {
-            printf("array[%d]: ", i);
+            printf("array[%2d]: ", i);
             switch(dataType)
             {
                 case 'i':
-                    printf("%d\n", *(int*)array->elements+i);
+                    printf("%d\n", *((int*)array->elements[i]));
                     break;
                 case 'c':
-                    printf("%c\n", *(char*)array->elements+i);
+                    printf("%c\n", *((char*)array->elements[i]));
                     break;
                 case 'f':
-                    printf("%f\n", *(float*)array->elements+i);
+                    printf("%f\n", *((float*)array->elements[i]));
                     break;
                 default:
                     printf("unspecified\n");
