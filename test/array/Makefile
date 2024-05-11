@@ -4,14 +4,14 @@
 SRC_DIR := ../../src
 
 # compile main.c
-output.out:common.o stack.o main.c
-	gcc -Wall common.o stack.o main.c -o output.out -I $(SRC_DIR)
+output.out:common.o array.o main.c
+	gcc -Wall common.o array.o main.c -o output.out -I $(SRC_DIR)
 	mkdir -p obj
 	mv *.o obj
 
-# compile stack.c
-stack.o:$(SRC_DIR)/stack/stack.c
-	gcc -Wall -c $(SRC_DIR)/stack/stack.c -o stack.o
+# compile array.c
+array.o:$(SRC_DIR)/array/array.c
+	gcc -Wall -c $(SRC_DIR)/array/array.c -o array.o
 
 # compile common.c
 # -c: compile without linking.
