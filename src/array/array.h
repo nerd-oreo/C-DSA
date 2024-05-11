@@ -9,9 +9,9 @@
 
 typedef struct Array
 {
-    void **elements;
-    size_t capactity; // Available memory
-    size_t size;      // Actual size with data
+    void **elements;    // Using void** (pointer to pointer) to create an array of pointers that can store data addresses instead of data value.
+    size_t capactity;   // Available memory
+    size_t size;        // Actual size with data
 } Array;
 
 Array * Array_init(size_t capactity, size_t sizeType);
