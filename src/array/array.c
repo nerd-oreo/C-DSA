@@ -49,7 +49,7 @@ void Array_debug(Array *array, char dataType)
 
     if (array->size > 0)
     {
-        printf("\n-----------------------------\n");
+        printf("-----------------------------\n");
         printf("Array Data:\n");
         for (int i = 0; i < array->size; i++)
         {
