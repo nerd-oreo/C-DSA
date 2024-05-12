@@ -9,12 +9,12 @@
 
 typedef struct Array
 {
-    void **elements;    // Using void** (pointer to pointer) to create an array of pointers that can store data addresses instead of data value.
-    size_t capactity;   // Available memory
-    size_t size;        // Actual size with data
+    void **elements;  // Using void** (pointer to pointer) to create an array of pointers that can store data addresses instead of data value.
+    size_t capactity; // Available memory
+    size_t size;      // Actual size with data
 } Array;
 
-Array * Array_init(size_t capactity, size_t sizeType);
+Array *Array_init(size_t capactity, size_t sizeType);
 
 // Adding operations
 void Array_append(Array *array, void *data);              // Add last
@@ -27,9 +27,9 @@ void Array_removeLast(Array *array);
 void Array_removeAt(Array *array, int index);
 
 // Accessing operations
-void * Array_get(Array *array, int index);
-void * Array_getFirst(Array *array);
-void * Array_getLast(Array *array);
+void *Array_get(Array *array, int index);
+void *Array_getFirst(Array *array);
+void *Array_getLast(Array *array);
 
 // Shifting
 void Array_shiftLeft(Array *array);
@@ -41,8 +41,8 @@ size_t Array_capacity(Array *array);
 void Array_resize(Array *array, size_t newSize);
 bool Array_isEmpty(Array *array);
 
-// Search and Update operations
-int Array_search(Array *array, void *value);    // Return value index
+// Search operations
+int Array_search(Array *array, void *value); // Return value index
 
 // Sort Operations
 void Array_sort(Array *array);
