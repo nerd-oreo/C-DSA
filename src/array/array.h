@@ -35,7 +35,7 @@ void Array_shiftRight(Array *array);
 
 size_t Array_size(Array *array);
 size_t Array_capacity(Array *array);
-Array *Array_resize(Array *array, size_t newCapacity);
+void Array_resize(Array *array, size_t newCapacity);
 bool Array_isEmpty(Array *array);
 
 int Array_search(Array *array, void *value); // Return value index
