@@ -1,4 +1,4 @@
-/**  
+/**
  *  @file       array.h
  *  @brief      This file declare the interface for dynamic array data structure.
  *  @author     Duy Tran
@@ -13,6 +13,7 @@ typedef struct Array
     void **elements;  // Using void** (pointer to pointer) to create an array of pointers that can store data addresses instead of data value.
     size_t capactity; // Available memory
     size_t size;      // Actual size with data
+    size_t sizeType;  // The size of the data type that stores in the array
 } Array;
 
 Array *Array_init(size_t capactity, size_t sizeType);
@@ -34,7 +35,7 @@ void Array_shiftRight(Array *array);
 
 size_t Array_size(Array *array);
 size_t Array_capacity(Array *array);
-void Array_resize(Array *array, size_t newSize);
+Array *Array_resize(Array *array, size_t newCapacity);
 bool Array_isEmpty(Array *array);
 
 int Array_search(Array *array, void *value); // Return value index
