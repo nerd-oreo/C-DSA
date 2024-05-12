@@ -10,6 +10,7 @@
 
 /**
  *  @brief      Initialize new array
+ *
  *  @param      capacity    The number of elements the array can hold.
  *  @param      typeSize    Size of the data type that being stored in the array.
  *  @return     Return the address to the new array
@@ -22,6 +23,7 @@ Array *Array_init(size_t capacity, size_t sizeType)
         array->elements = (void **)malloc(capacity * sizeType);
         array->capactity = capacity;
         array->size = 0;
+        array->sizeType = sizeType;
         return array;
     }
     fprintf(stderr, "Failed to allocate memory. \n");
@@ -31,16 +33,18 @@ Array *Array_init(size_t capacity, size_t sizeType)
 /** ADDING OPERATIONS **/
 /**
  *  @brief      Append an element to the end of the array.
+ *
  *  @param      *array      The address to the allocated array.
  *  @param      *data       The address to the data.
  */
 void Array_append(Array *array, void *data)
 {
-    if (array->size < array->capactity)
+    if (array->size == array->capactity)
     {
-        array->elements[array->size] = data;
-        array->size++;
+        Array_resize(array, array->capactity * 2);
     }
+    array->elements[array->size] = data;
+    array->size++;
 }
 
 /** REMOVING OPERATIONS **/
@@ -72,10 +76,30 @@ size_t Array_capacity(Array *array)
 }
 
 /**
+ * @brief               Resize the array
+ *
+ * @param array         The address to the array
+ * @param newCapacity   The new capacity of the array
+ */
+void Array_resize(Array *array, size_t newCapacity)
+{
+    if (array != NULL)
+    {
+        printf("\n -> Resizing the array to new capacity: %lld - ", newCapacity);
+        array->elements = (void **)realloc(array->elements, newCapacity * array->sizeType);
+        array->capactity = newCapacity;
+        if (array->elements != NULL)
+        {
+            printf("DONE\n");
+        }
+    }
+}
+
+/**
  * @brief           Check if the array is empty
  *
  * @param array     The address of the array
- * @return     Return true if the array is empty, otherwise false.
+ * @return          Return true if the array is empty, otherwise false.
  */
 bool Array_isEmpty(Array *array)
 {
@@ -94,6 +118,8 @@ bool Array_isEmpty(Array *array)
  */
 void Array_debug(Array *array, char dataType)
 {
+    printf("\n");
+    printf("Array locates at %p\n", array);
     printf("Capacity: %lld\n", array->capactity);
     printf("Size: %lld\n", array->size);
 
