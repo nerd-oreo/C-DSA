@@ -31,6 +31,7 @@ Array *Array_init(size_t capacity, size_t sizeType)
 }
 
 /** ADDING OPERATIONS **/
+
 /**
  *  @brief      Append an element to the end of the array.
  *
@@ -50,22 +51,64 @@ void Array_append(Array *array, void *data)
 /** REMOVING OPERATIONS **/
 
 /** ACCESSING OPERATIONS **/
+
+/**
+ * @brief           Get the element from the array at a specific index
+ * 
+ * @param array     The address of the array
+ * @param index     Element index
+ * @return void*    Return the address of the element
+ */
 void *Array_get(Array *array, int index)
 {
+    void *element = NULL;
     if (array != NULL && !Array_isEmpty(array))
     {
-        return array->elements[index];
+        element = array->elements[index];
     }
-    return NULL;
+    return element;
+}
+
+/**
+ * @brief           Get the first element from the array
+ * 
+ * @param array     The address to the array
+ * @return void*    Return the address of the element
+ */
+void *Array_getFirst(Array *array)
+{
+    void *element = NULL;
+    if (array != NULL && !Array_isEmpty(array))
+    {
+        element = array->elements[0];
+    }
+    return element;
+}
+
+/**
+ * @brief           Get the last element from the array
+ * 
+ * @param array     The address to the array
+ * @return void*    Return the address of the element
+ */
+void *Array_getLast(Array *array)
+{
+    void *element = NULL;
+    if (array != NULL && !Array_isEmpty(array))
+    {
+        element = array->elements[array->size-1];
+    }
+    return element; 
 }
 
 /** SHIFTING OPERATIONS **/
 
 /** SIZE AND CAPACITY OPERATIONS **/
+
 /**
- *  @brief      Get the size of the array
- *  @param      *array      The address of the array
- *  @return     Return the size of the array
+ *  @brief          Get the size of the array
+ *  @param array    The address of the array
+ *  @return         Return the size of the array
  */
 size_t Array_size(Array *array)
 {
@@ -119,10 +162,11 @@ bool Array_isEmpty(Array *array)
 /** SORT OPERATIONS **/
 
 /** OTHER OPERATIONS **/
+
 /**
- *  @brief      Print array data for debugging purpose.
- *  @param      array:      The address to the array.
- *  @param      dataType:   Indicate data type for printing format.
+ *  @brief              Print array data for debugging purpose.
+ *  @param array        The address to the array.
+ *  @param dataType     Indicate data type for printing format.
  */
 void Array_debug(Array *array, char dataType)
 {
