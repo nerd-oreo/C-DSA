@@ -29,6 +29,7 @@ int main()
     // Print array data
     Array_debug(array, 'i');
 
+    printf("\n");
     printf("Test Array_get():\n");
     int index = 12;
     void *data = Array_get(array, index);
@@ -36,4 +37,14 @@ int main()
     index = 4;
     data = Array_get(array, index);
     printf("Value at index %d: %d\n", index, *(int*)data);
+    
+    printf("\n");
+    printf("Test Array_getFirst():\n");
+    data = Array_getFirst(array);
+    printf("First element value: %d\n", *(int*)data);
+
+    printf("\n");
+    printf("Test Array_getLast():\n");
+    data = Array_getLast(array);
+    printf("Last element value: %d\n", *(int*)data);
 }
