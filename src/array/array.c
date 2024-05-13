@@ -50,6 +50,14 @@ void Array_append(Array *array, void *data)
 /** REMOVING OPERATIONS **/
 
 /** ACCESSING OPERATIONS **/
+void *Array_get(Array *array, int index)
+{
+    if (array != NULL && !Array_isEmpty(array))
+    {
+        return array->elements[index];
+    }
+    return NULL;
+}
 
 /** SHIFTING OPERATIONS **/
 
