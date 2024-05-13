@@ -11,7 +11,9 @@ int main()
     int test_time = 16;
 
     // Initialize array
+    printf("Test Array_init(): ");
     Array *array = Array_init(capacity, sizeof(int *));
+    if (array != NULL) { printf("PASS\n"); }
 
     // Test Array_debug()
     Array_debug(array, 'i');
@@ -26,4 +28,12 @@ int main()
 
     // Print array data
     Array_debug(array, 'i');
+
+    printf("Test Array_get():\n");
+    int index = 12;
+    void *data = Array_get(array, index);
+    printf("Value at index %d: %d\n", index, *(int*)data);
+    index = 4;
+    data = Array_get(array, index);
+    printf("Value at index %d: %d\n", index, *(int*)data);
 }
