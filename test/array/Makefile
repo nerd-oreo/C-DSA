@@ -19,6 +19,9 @@ array.o:$(SRC_DIR)/array/array.c
 common.o:$(SRC_DIR)/common/common.c
 	gcc -Wall -c $(SRC_DIR)/common/common.c -o common.o
 
+run:
+	./output.out
+
 clean:
 	rm -f *.out
 	rm -rf obj
