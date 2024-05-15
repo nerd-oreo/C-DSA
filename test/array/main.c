@@ -47,4 +47,10 @@ int main()
     printf("Test Array_getLast():\n");
     data = Array_getLast(array);
     printf("Last element value: %d\n", *(int*)data);
+
+    printf("\n");
+    printf("Test Array_shiftRight");
+    int targetIndex = 0;
+    Array_shiftRight(array, targetIndex);
+    Array_debug(array, 'i');
 }
