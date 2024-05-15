@@ -30,8 +30,8 @@ void *Array_get(Array *array, int index);
 void *Array_getFirst(Array *array);
 void *Array_getLast(Array *array);
 
-void Array_shiftLeft(Array *array);
-void Array_shiftRight(Array *array);
+void Array_shiftLeft(Array *array, int targetIndex);
+void Array_shiftRight(Array *array, int targetIndex);
 
 size_t Array_size(Array *array);
 size_t Array_capacity(Array *array);
