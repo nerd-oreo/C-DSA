@@ -100,6 +100,12 @@ void *Array_getLast(Array *array)
 }
 
 // SHIFTING OPERATIONS
+/**
+ * @brief               Shift the elements to the right from a specific index
+ * 
+ * @param array         The address of the array
+ * @param targetIndex   The target index where the shifting start
+ */
 void Array_shiftRight(Array *array, int targetIndex)
 {
     assert(array != NULL);
