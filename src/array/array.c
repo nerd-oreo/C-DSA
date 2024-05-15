@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <assert.h>
 #include "array.h"
 
 /**
@@ -30,8 +31,7 @@ Array *Array_init(size_t capacity, size_t sizeType)
     return NULL;
 }
 
-/** ADDING OPERATIONS **/
-
+// ADDING OPERATIONS
 /**
  *  @brief      Append an element to the end of the array.
  *
@@ -44,14 +44,12 @@ void Array_append(Array *array, void *data)
     {
         Array_resize(array, array->capactity * 2);
     }
-    array->elements[array->size] = data;
-    array->size++;
+    array->elements[array->size++] = data;
 }
 
-/** REMOVING OPERATIONS **/
+// REMOVING OPERATIONS
 
-/** ACCESSING OPERATIONS **/
-
+// ACCESSING OPERATIONS
 /**
  * @brief           Get the element from the array at a specific index
  * 
@@ -101,10 +99,29 @@ void *Array_getLast(Array *array)
     return element; 
 }
 
-/** SHIFTING OPERATIONS **/
+// SHIFTING OPERATIONS
+void Array_shiftRight(Array *array, int targetIndex)
+{
+    assert(array != NULL);
+    if (array->size == array->capactity)
+    {
+        Array_resize(array, array->capactity*2);
+    }
 
-/** SIZE AND CAPACITY OPERATIONS **/
+    for (int i = array->size; i >= targetIndex; i--)
+    {
+        array->elements[i+1] = array->elements[i];
+    }
+    array->elements[targetIndex] = NULL;
+    array->size++;
+}
 
+void Array_shiftLeft(Array *array, int targetIndex)
+{
+
+}
+
+// SIZE AND CAPACITY OPERATIONS
 /**
  *  @brief          Get the size of the array
  *  @param array    The address of the array
@@ -157,12 +174,11 @@ bool Array_isEmpty(Array *array)
     return array->size == 0;
 }
 
-/** SEARCH OPERATIONS **/
+// SEARCH OPERATIONS
 
-/** SORT OPERATIONS **/
+// SORT OPERATIONS
 
-/** OTHER OPERATIONS **/
-
+// OTHER OPERATIONS
 /**
  *  @brief              Print array data for debugging purpose.
  *  @param array        The address to the array.
@@ -182,20 +198,26 @@ void Array_debug(Array *array, char dataType)
         for (int i = 0; i < array->size; i++)
         {
             printf("array[%2d]: ", i);
-            switch (dataType)
+            if (array->elements[i] != NULL)
             {
-            case 'i':
-                printf("%d\n", *((int *)array->elements[i]));
-                break;
-            case 'c':
-                printf("%c\n", *((char *)array->elements[i]));
-                break;
-            case 'f':
-                printf("%f\n", *((float *)array->elements[i]));
-                break;
-            default:
-                printf("unspecified\n");
-                break;
+                switch (dataType)
+                {
+                case 'i':
+                    printf("%d\n", *((int *)array->elements[i]));
+                    break;
+                case 'c':
+                    printf("%c\n", *((char *)array->elements[i]));
+                    break;
+                case 'f':
+                    printf("%f\n", *((float *)array->elements[i]));
+                    break;
+                default:
+                    printf("unspecified\n");
+                    break;
+                }
+            }
+            else {
+                printf("NULL\n");
             }
         }
     }
