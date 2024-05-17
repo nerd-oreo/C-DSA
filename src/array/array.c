@@ -28,7 +28,7 @@ Array *Array_init(size_t capacity, size_t sizeType)
         array->sizeType = sizeType;
         return array;
     }
-    fprintf(stderr, "Failed to allocate memory. \n");
+    fprintf(stderr, "Failed to allocate memory.\n");
     return NULL;
 }
 
@@ -36,8 +36,8 @@ Array *Array_init(size_t capacity, size_t sizeType)
 /**
  *  @brief      Append an element to the end of the array.
  *
- *  @param      *array      The address to the allocated array.
- *  @param      *data       The address to the data.
+ *  @param array      The address to the allocated array.
+ *  @param data       The address to the data.
  */
 void Array_append(Array *array, void *data)
 {
@@ -47,18 +47,40 @@ void Array_append(Array *array, void *data)
     }
     // array->elements[array->size++] = data;
     void *element = malloc(array->sizeType); // allocate memory for a new element
-    assert(element != NULL);
-    memcpy(element, data, array->sizeType);   // copy value from data pointer to the new element
-    array->elements[array->size++] = element; // add the new element to the end of the array
+    if (element != NULL)
+    {
+        memcpy(element, data, array->sizeType);   // copy value from data pointer to the new element
+        array->elements[array->size++] = element; // add the new element to the end of the array
+    }
+    else
+    {
+        fprintf(stderr, "Failed to allocate memory for the new element.\n");
+    }
 }
 
-// void Array_prepend(Array *array, void *data)
-// {
-//     int firstIndex = 0;
-//     assert(array != NULL);
-//     Array_shiftRight(array, firstIndex);
-//     array->elements[firstIndex] = data;
-// }
+/**
+ * @brief           Add new data to the beginning of the array
+ *
+ * @param array     The address of the array
+ * @param data      The address of the data
+ */
+void Array_prepend(Array *array, void *data)
+{
+    int firstIndex = 0;
+    assert(array != NULL);
+    Array_shiftRight(array, firstIndex);
+
+    void *element = malloc(array->sizeType);
+    if (element != NULL)
+    {
+        memcpy(element, data, array->sizeType);
+        array->elements[firstIndex] = data;
+    }
+    else
+    {
+        fprintf(stderr, "Failed to allocate memory for the new element.\n");
+    }
+}
 
 // REMOVING OPERATIONS
 
