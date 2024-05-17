@@ -52,8 +52,9 @@ int main()
     data = Array_getLast(array);
     printf("Last element value: %d\n", *(int *)data);
 
-    // printf("\n");
-    // printf("Test Array_prepend");
-    // Array_append(array, 5);
-    // Array_debug(array, 'i');
+    printf("\n");
+    printf("Test Array_prepend");
+    int newData = 5;
+    Array_prepend(array, &newData);
+    Array_debug(array, 'i');
 }
