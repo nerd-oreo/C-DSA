@@ -74,11 +74,36 @@ void Array_prepend(Array *array, void *data)
     if (element != NULL)
     {
         memcpy(element, data, array->sizeType);
-        array->elements[firstIndex] = data;
+        array->elements[firstIndex] = element;
     }
     else
     {
         fprintf(stderr, "Failed to allocate memory for the new element.\n");
+    }
+}
+
+/**
+ * @brief           Add new element to a specific index
+ *
+ * @param array     The address of the array
+ * @param index     Array index
+ * @param data      The address of the data
+ */
+void Array_insertAt(Array *array, int index, void *data)
+{
+    if (array != NULL)
+    {
+        Array_shiftRight(array, index);
+        void *element = malloc(array->sizeType);
+        if (element != NULL)
+        {
+            memcpy(element, data, array->sizeType);
+            array->elements[index] = element;
+        }
+        else
+        {
+            fprintf(stderr, "Failed to allocate memory for the new element.\n");
+        }
     }
 }
 
@@ -143,18 +168,20 @@ void *Array_getLast(Array *array)
  */
 void Array_shiftRight(Array *array, int targetIndex)
 {
-    assert(array != NULL);
-    if (array->size == array->capactity)
+    if (array != NULL)
     {
-        Array_resize(array, array->capactity * 2);
-    }
+        if (array->size == array->capactity)
+        {
+            Array_resize(array, array->capactity * 2);
+        }
 
-    for (int i = array->size; i >= targetIndex; i--)
-    {
-        array->elements[i + 1] = array->elements[i];
+        for (int i = array->size; i >= targetIndex; i--)
+        {
+            array->elements[i + 1] = array->elements[i];
+        }
+        array->elements[targetIndex] = NULL;
+        array->size++;
     }
-    array->elements[targetIndex] = NULL;
-    array->size++;
 }
 
 void Array_shiftLeft(Array *array, int targetIndex)
@@ -193,13 +220,8 @@ void Array_resize(Array *array, size_t newCapacity)
 {
     if (array != NULL)
     {
-        printf("\n -> Resizing the array to new capacity: %lld - ", newCapacity);
         array->elements = (void **)realloc(array->elements, newCapacity * array->sizeType);
         array->capactity = newCapacity;
-        if (array->elements != NULL)
-        {
-            printf("DONE\n");
-        }
     }
 }
 
@@ -228,6 +250,7 @@ void Array_debug(Array *array, char dataType)
 {
     printf("\n");
     printf("Array locates at %p\n", array);
+    printf("Array elements locate at %p\n", array->elements);
     printf("Capacity: %lld\n", array->capactity);
     printf("Size: %lld\n", array->size);
 
