@@ -3,10 +3,11 @@
  *  @brief      This file contains the implementations of dynamic array operations.
  *  @author     Duy Tran
  */
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <assert.h>
+#include <string.h>
 #include "array.h"
 
 /**
@@ -44,15 +45,27 @@ void Array_append(Array *array, void *data)
     {
         Array_resize(array, array->capactity * 2);
     }
-    array->elements[array->size++] = data;
+    // array->elements[array->size++] = data;
+    void *element = malloc(array->sizeType); // allocate memory for a new element
+    assert(element != NULL);
+    memcpy(element, data, array->sizeType);   // copy value from data pointer to the new element
+    array->elements[array->size++] = element; // add the new element to the end of the array
 }
+
+// void Array_prepend(Array *array, void *data)
+// {
+//     int firstIndex = 0;
+//     assert(array != NULL);
+//     Array_shiftRight(array, firstIndex);
+//     array->elements[firstIndex] = data;
+// }
 
 // REMOVING OPERATIONS
 
 // ACCESSING OPERATIONS
 /**
  * @brief           Get the element from the array at a specific index
- * 
+ *
  * @param array     The address of the array
  * @param index     Element index
  * @return void*    Return the address of the element
@@ -69,7 +82,7 @@ void *Array_get(Array *array, int index)
 
 /**
  * @brief           Get the first element from the array
- * 
+ *
  * @param array     The address to the array
  * @return void*    Return the address of the element
  */
@@ -85,7 +98,7 @@ void *Array_getFirst(Array *array)
 
 /**
  * @brief           Get the last element from the array
- * 
+ *
  * @param array     The address to the array
  * @return void*    Return the address of the element
  */
@@ -94,15 +107,15 @@ void *Array_getLast(Array *array)
     void *element = NULL;
     if (array != NULL && !Array_isEmpty(array))
     {
-        element = array->elements[array->size-1];
+        element = array->elements[array->size - 1];
     }
-    return element; 
+    return element;
 }
 
 // SHIFTING OPERATIONS
 /**
  * @brief               Shift the elements to the right from a specific index
- * 
+ *
  * @param array         The address of the array
  * @param targetIndex   The target index where the shifting start
  */
@@ -111,12 +124,12 @@ void Array_shiftRight(Array *array, int targetIndex)
     assert(array != NULL);
     if (array->size == array->capactity)
     {
-        Array_resize(array, array->capactity*2);
+        Array_resize(array, array->capactity * 2);
     }
 
     for (int i = array->size; i >= targetIndex; i--)
     {
-        array->elements[i+1] = array->elements[i];
+        array->elements[i + 1] = array->elements[i];
     }
     array->elements[targetIndex] = NULL;
     array->size++;
@@ -124,7 +137,6 @@ void Array_shiftRight(Array *array, int targetIndex)
 
 void Array_shiftLeft(Array *array, int targetIndex)
 {
-
 }
 
 // SIZE AND CAPACITY OPERATIONS
@@ -222,7 +234,8 @@ void Array_debug(Array *array, char dataType)
                     break;
                 }
             }
-            else {
+            else
+            {
                 printf("NULL\n");
             }
         }
