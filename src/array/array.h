@@ -21,6 +21,7 @@ Array *Array_init(size_t capactity, size_t sizeType);
 void Array_append(Array *array, void *data);              // Add last
 void Array_prepend(Array *array, void *data);             // Add first
 void Array_insertAt(Array *array, int index, void *data); // Insert data at a specifc index
+void Array_push(Array *array, void *data);
 
 void Array_removeFirst(Array *array);
 void Array_removeLast(Array *array);
