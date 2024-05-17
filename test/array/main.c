@@ -57,4 +57,28 @@ int main()
     int newData = 5;
     Array_prepend(array, &newData);
     Array_debug(array, 'i');
+
+    printf("\n");
+    printf("Test Array_insertAdd");
+    newData = 1000;
+    Array_insertAt(array, 5, &newData);
+    Array_debug(array, 'i');
+
+    printf("\n");
+    printf("Test Array_insertAdd");
+    newData = 2000;
+    Array_insertAt(array, Array_size(array), &newData);
+    Array_debug(array, 'i');
+
+    printf("\n");
+    printf("Test Array_insertAdd");
+    newData = random_number(1, 2000);
+    Array_insertAt(array, Array_size(array), &newData);
+    Array_debug(array, 'i');
+
+    printf("\n");
+    printf("Test Array_insertAdd");
+    newData = random_number(1, 2000);
+    Array_insertAt(array, Array_size(array), &newData);
+    Array_debug(array, 'i');
 }
