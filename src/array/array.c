@@ -107,6 +107,17 @@ void Array_insertAt(Array *array, int index, void *data)
     }
 }
 
+/**
+ * @brief           Push the data add the end of the array
+ *
+ * @param array     The address of the array
+ * @param data      The address of the data
+ */
+void Array_push(Array *array, void *data)
+{
+    Array_append(array, data);
+}
+
 // REMOVING OPERATIONS
 
 // ACCESSING OPERATIONS
