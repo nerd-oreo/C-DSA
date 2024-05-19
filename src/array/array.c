@@ -170,6 +170,17 @@ void *Array_getLast(Array *array)
     return element;
 }
 
+/**
+ * @brief           Get the element at the top of the stack (the last element in the array)
+ *
+ * @param array     The address of the array
+ * @return void*    Return the address of the element
+ */
+void *Array_top(Array *array)
+{
+    return Array_getLast(array);
+}
+
 // SHIFTING OPERATIONS
 /**
  * @brief               Shift the elements to the right from a specific index
