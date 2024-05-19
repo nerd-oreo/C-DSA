@@ -92,4 +92,20 @@ int main()
     printf("Test Array_top");
     void *topElement = Array_top(array);
     printf("Top Element = %d\n", *(int *)topElement);
+
+    printf("\n");
+    printf("Test Array_shiftLeft");
+    Array_shiftLeft(array, 0);
+    Array_debug(array, 'i');
+    Array_shiftLeft(array, 5);
+    Array_debug(array, 'i');
+
+    printf("\n");
+    printf("Test Array_shiftLeft with resize");
+    int shiftTime = 10;
+    for (int i = 0; i < shiftTime; i++)
+    {
+        Array_shiftLeft(array, 0);
+    }
+    Array_debug(array, 'i');
 }
