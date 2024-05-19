@@ -87,4 +87,9 @@ int main()
     newData = random_number(1, 2000);
     Array_push(array, &newData);
     Array_debug(array, 'i');
+
+    printf("\n");
+    printf("Test Array_top");
+    void *topElement = Array_top(array);
+    printf("Top Element = %d\n", *(int *)topElement);
 }
