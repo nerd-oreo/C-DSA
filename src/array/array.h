@@ -23,9 +23,9 @@ void Array_prepend(Array *array, void *data);             // Add first
 void Array_insertAt(Array *array, int index, void *data); // Insert data at a specifc index
 void Array_push(Array *array, void *data);
 
-void Array_removeFirst(Array *array);
-void Array_removeLast(Array *array);
-void Array_removeAt(Array *array, int index);
+void *Array_removeFirst(Array *array);
+void *Array_removeLast(Array *array);
+void *Array_removeAt(Array *array, int index);
 void *Array_pop(Array *array);
 
 void *Array_get(Array *array, int index);
