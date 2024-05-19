@@ -26,10 +26,12 @@ void Array_push(Array *array, void *data);
 void Array_removeFirst(Array *array);
 void Array_removeLast(Array *array);
 void Array_removeAt(Array *array, int index);
+void *Array_pop(Array *array);
 
 void *Array_get(Array *array, int index);
 void *Array_getFirst(Array *array);
 void *Array_getLast(Array *array);
+void *Array_top(Array *array);
 
 void Array_shiftLeft(Array *array, int targetIndex);
 void Array_shiftRight(Array *array, int targetIndex);
