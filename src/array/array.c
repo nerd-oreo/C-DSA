@@ -206,6 +206,12 @@ void Array_shiftRight(Array *array, int targetIndex)
     }
 }
 
+/**
+ * @brief               Shift the elements to the left from a specific index
+ *
+ * @param array         The address of the array
+ * @param targetIndex   The target index where the shift start
+ */
 void Array_shiftLeft(Array *array, int targetIndex)
 {
     if (array != NULL)
