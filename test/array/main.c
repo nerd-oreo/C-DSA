@@ -100,12 +100,24 @@ int main()
     Array_shiftLeft(array, 5);
     Array_debug(array, 'i');
 
+    // printf("\n");
+    // printf("Test Array_shiftLeft with resize");
+    // int shiftTime = 10;
+    // for (int i = 0; i < shiftTime; i++)
+    // {
+    //     Array_shiftLeft(array, 0);
+    // }
+    // Array_debug(array, 'i');
+
     printf("\n");
-    printf("Test Array_shiftLeft with resize");
-    int shiftTime = 10;
-    for (int i = 0; i < shiftTime; i++)
-    {
-        Array_shiftLeft(array, 0);
-    }
+    printf("Test Array_removeFirst");
+    void *removedData = Array_removeFirst(array);
     Array_debug(array, 'i');
+    printf("\nRemoved element: %d\n", *(int *)removedData);
+
+    printf("\n");
+    printf("Test Array_removeLast");
+    removedData = Array_removeLast(array);
+    Array_debug(array, 'i');
+    printf("\nRemoved element: %d\n", *(int *)removedData);
 }
