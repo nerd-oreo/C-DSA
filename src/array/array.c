@@ -119,6 +119,40 @@ void Array_push(Array *array, void *data)
 }
 
 // REMOVING OPERATIONS
+/**
+ * @brief           Remove the first element in the array
+ *
+ * @param array     The address of the array
+ * @return void*    Return the data stores in the first element
+ */
+void *Array_removeFirst(Array *array)
+{
+    void *element = NULL;
+    if (array != NULL && !Array_isEmpty(array))
+    {
+        int firstIndex = 0;
+        element = array->elements[firstIndex];
+        Array_shiftLeft(array, firstIndex);
+    }
+    return element;
+}
+
+/**
+ * @brief           Remove the last element in the array
+ *
+ * @param array     The address of the array
+ * @return void*    Return the data stores in the first element
+ */
+void *Array_removeLast(Array *array)
+{
+    void *element = NULL;
+    if (array != NULL && !Array_isEmpty(array))
+    {
+        element = array->elements[--array->size]; // pre-increment operator: --array->size decrease the value of size and return the decremented value
+        array->elements[array->size] = NULL;
+    }
+    return element;
+}
 
 // ACCESSING OPERATIONS
 /**
@@ -220,8 +254,8 @@ void Array_shiftLeft(Array *array, int targetIndex)
         {
             array->elements[i] = array->elements[i + 1];
         }
-        array->elements[array->size] = NULL;
-        array->size--;
+        array->elements[array->size--] = NULL;
+        // array->size--;
 
         if ((array->size * 2) == array->capactity)
         {
