@@ -81,4 +81,10 @@ int main()
     newData = random_number(1, 2000);
     Array_insertAt(array, Array_size(array), &newData);
     Array_debug(array, 'i');
+
+    printf("\n");
+    printf("Test Array_push");
+    newData = random_number(1, 2000);
+    Array_push(array, &newData);
+    Array_debug(array, 'i');
 }
