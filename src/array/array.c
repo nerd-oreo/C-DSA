@@ -208,6 +208,20 @@ void Array_shiftRight(Array *array, int targetIndex)
 
 void Array_shiftLeft(Array *array, int targetIndex)
 {
+    if (array != NULL)
+    {
+        for (int i = targetIndex; i < array->size; i++)
+        {
+            array->elements[i] = array->elements[i + 1];
+        }
+        array->elements[array->size] = NULL;
+        array->size--;
+
+        if ((array->size * 2) == array->capactity)
+        {
+            Array_resize(array, array->capactity / 2);
+        }
+    }
 }
 
 // SIZE AND CAPACITY OPERATIONS
