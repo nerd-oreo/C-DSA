@@ -154,6 +154,28 @@ void *Array_removeLast(Array *array)
     return element;
 }
 
+/**
+ * @brief           This function removes and returnn the element at a given index. All the subsequent elements are shifted to the left to fill the empty gap.
+ *                  If the array is empty or the index is out of bounds, the function returns NULL and the array remains unchanged.
+ *
+ * @param array     A pointer to the array.
+ * @param index     The index of the element to be removed.
+ * @return void*    Returns the data stored at the specified index, or NULL if the array is empty or the index is out of bounds.
+ */
+void *Array_removeAt(Array *array, int index)
+{
+    void *element = NULL;
+    if (array != NULL && !Array_isEmpty(array))
+    {
+        if (index >= 0 && index < array->size)
+        {
+            element = array->elements[index];
+            Array_shiftLeft(array, index);
+        }
+    }
+    return element;
+}
+
 // ACCESSING OPERATIONS
 /**
  * @brief           Get the element from the array at a specific index
@@ -254,9 +276,11 @@ void Array_shiftLeft(Array *array, int targetIndex)
         {
             array->elements[i] = array->elements[i + 1];
         }
-        array->elements[array->size--] = NULL;
+        // array->elements[array->size--] = NULL;
+        free(array->elements[array->size--]);
         // array->size--;
 
+        // Resize the array if the size if half of the capacity
         if ((array->size * 2) == array->capactity)
         {
             Array_resize(array, array->capactity / 2);
