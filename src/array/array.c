@@ -34,10 +34,10 @@ Array *Array_init(size_t capacity, size_t sizeType)
 
 // ADDING OPERATIONS
 /**
- *  @brief      Append an element to the end of the array.
+ *  @brief          This function adds a new element to the end of the array.
  *
- *  @param array      The address to the allocated array.
- *  @param data       The address to the data.
+ *  @param array    A pointer to the array.
+ *  @param data     A pointer to the data to be stored in the array.
  */
 void Array_append(Array *array, void *data)
 {
@@ -46,10 +46,10 @@ void Array_append(Array *array, void *data)
         Array_resize(array, array->capactity * 2);
     }
     // array->elements[array->size++] = data;
-    void *element = malloc(array->sizeType); // allocate memory for a new element
+    void *element = malloc(array->sizeType); // allocate memory spaces for the new element
     if (element != NULL)
     {
-        memcpy(element, data, array->sizeType);   // copy value from data pointer to the new element
+        memcpy(element, data, array->sizeType);   // copy bytes from the data pointer to the element memory
         array->elements[array->size++] = element; // add the new element to the end of the array
     }
     else
