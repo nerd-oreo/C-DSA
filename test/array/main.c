@@ -120,4 +120,22 @@ int main()
     removedData = Array_removeLast(array);
     Array_debug(array, 'i');
     printf("\nRemoved element: %d\n", *(int *)removedData);
+
+    printf("\n");
+    printf("Test Array_removeAt");
+    index = 7;
+    removedData = Array_removeAt(array, index);
+    Array_debug(array, 'i');
+    printf("\nRemoved element: %d\n", *(int *)removedData);
+
+    printf("\n");
+    printf("Test Array_removeAt - Using loop");
+    for (int i = array->size - 1; i >= 0; i--)
+    {
+        removedData = Array_removeAt(array, i);
+        Array_debug(array, 'i');
+        printf("\nRemoved element: %d at index %d\n", *(int *)removedData, i);
+    }
+
+    return 0;
 }
