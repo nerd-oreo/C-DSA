@@ -11,11 +11,11 @@
 #include "array.h"
 
 /**
- *  @brief      Initialize new array
+ *  @brief      This function initializes a new array with the given capacity and type size.
  *
- *  @param      capacity    The number of elements the array can hold.
- *  @param      typeSize    Size of the data type that being stored in the array.
- *  @return     Return the address to the new array
+ *  @param      capacity    The maximum number of elements the array can hold before it needs to be resized. The capacity must the an integer and greater than 0.
+ *  @param      typeSize    The size of the data type that is stored in the array.
+ *  @return     Returns a pointer to the array, or NULL if the system fails to allocate memory spaces for the array.
  */
 Array *Array_init(size_t capacity, size_t sizeType)
 {
